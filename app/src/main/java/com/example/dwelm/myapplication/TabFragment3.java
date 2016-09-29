@@ -17,6 +17,7 @@ import java.util.List;
 public class TabFragment3 extends Fragment {
 
     String url = "http://www.wilhelmbotha.co.za/getMeds.php";
+    String urlAddress = "http://www.wilhelmbotha.co.za/updateMeds.php";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,9 +49,12 @@ public class TabFragment3 extends Fragment {
         lv.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String itemValue = lv.getSelectedItem().toString();
-                final updateMeds med = new updateMeds(c,url,itemValue);
+                String itemValue = (lv.getItemAtPosition(position).toString());
+                final updateMeds med = new updateMeds(c,urlAddress,itemValue);
                 med.execute();
+
+                final Downloader d = new Downloader(c,url,lv,3);
+                d.execute();
             }
         });
 

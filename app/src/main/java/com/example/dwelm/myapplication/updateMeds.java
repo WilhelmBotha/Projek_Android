@@ -24,6 +24,9 @@ public class updateMeds extends AsyncTask<Void,Void,String>{
     Context c;
     String urlAddress;
     String mystring;
+    String[] parts;
+    String part1;
+    String part2;
 
     ProgressDialog pd;
 
@@ -31,7 +34,13 @@ public class updateMeds extends AsyncTask<Void,Void,String>{
         this.c = c;
         this.urlAddress = urlAddress;
         this.mystring = mystring;
+        parts = mystring.split("\n");
+        part1 = parts[0]; // item1
+        part2 = parts[1]; // item2
     }
+
+
+
 
     @Override
     protected void onPreExecute() {
@@ -73,12 +82,12 @@ public class updateMeds extends AsyncTask<Void,Void,String>{
             return null;
         }
 
-       /* try
+        try
         {
             OutputStream os = con.getOutputStream();
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            bw.write(String.valueOf(js));
+            bw.write(String.valueOf(new medicalPacker(part1,part2).packData()));
             bw.flush();
             bw.close();
             os.close();
@@ -108,7 +117,7 @@ public class updateMeds extends AsyncTask<Void,Void,String>{
 
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
         return null;
     }

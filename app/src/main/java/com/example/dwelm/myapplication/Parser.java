@@ -66,12 +66,13 @@ public class Parser extends AsyncTask<Void, Integer, Integer>{
             ArrayAdapter<String> _adapter = new ArrayAdapter<String>(c,android.R.layout.simple_list_item_1,patients);
             lv.setAdapter(_adapter);
 
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           /* lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String items = lv.getSelectedItem().toString();
                     Snackbar.make(view, patients.get(position), Snackbar.LENGTH_SHORT).show();
                 }
-            });
+            });*/
 
         }
         else
